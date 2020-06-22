@@ -1,0 +1,7 @@
+.divInicio{
+    width: 60%;
+    margin-left: 20%;
+    min-height: 700px;
+    background: blue;
+    float: left;
+}

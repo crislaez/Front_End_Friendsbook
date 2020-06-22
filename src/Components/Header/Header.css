@@ -1,0 +1,85 @@
+header{
+    width: 100%;
+    height: 90px;
+    background: #3B5FA1;
+    float: left;
+}
+
+.divHeaderTitulo{
+    width: 50%;
+    height: 90px;
+    /* background: blueviolet; */
+    float: left;
+}
+
+.divHeaderTitulo h1{
+    margin-left: 35%;
+    font-size: 40px;
+    margin-top: 25px;
+    color: white;
+}
+
+header form{
+    width: 50%;
+    height: 90px;
+    /* background: blue; */
+    float: left;
+}
+
+header form input{
+    width: 100%;
+    margin-top: 5px;
+    height: 25px;
+    /* margin-left: 10%; */
+    border: none;
+}
+
+header form input[type='submit']{
+    margin-top: 35px;
+    margin-left: 35%;
+    color: white;
+    background: #4F82DC;
+    cursor: pointer;
+    font-weight: bold;
+    width: 30%;
+}
+
+.formCorreo{
+    width: 20%;
+    margin-left: 7%;
+    height: 90px;
+    /* background: greenyellow; */
+    float: left;
+}
+
+.formCorreo label{
+    /* margin-left: 20%; */
+    font-size: 13px;
+    margin-top: 15px;    
+    color: white;
+    float: left;
+}
+
+.formClave{
+    width: 20%;
+    margin-left: 2%;
+    height: 90px;
+    /* background: greenyellow; */
+    float: left;
+}
+
+.formClave label{
+    /* margin-left: 20%; */
+    font-size: 13px;
+    margin-top: 15px;    
+    color: white;
+    float: left;
+}
+
+.formBotonEnvio{
+    width: 20%;
+    margin-left: 2%;
+    height: 90px;
+    /* background: greenyellow; */
+    float: left;
+}
