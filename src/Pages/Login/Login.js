@@ -110,12 +110,12 @@ function Login(props){
                     <label>Hombre</label>
                     <br></br>
                     <label style={{marginTop:'10px', float:'left'}}>Avatar</label>
-                    <input type='file' name='avatar' onChange={(params) => {setAvatar(params.target.files[0])}}></input>
+                    <input id='bAvatar' type='file' name='avatar' onChange={(params) => {setAvatar(params.target.files[0])}}></input>
                     <br></br>
                     <label>Banner</label>
-                    <input id='bAvatar' type='file' name='banner' onChange={(params) => {setBanner(params.target.files[0])}}></input>
+                    <input id='bBanner' type='file' name='banner' onChange={(params) => {setBanner(params.target.files[0])}}></input>
                     <br></br>
-                    <input id='bBanner' type='submit' value='Registrarte'></input>
+                    <input type='submit' value='Registrarte'></input>
                 </form>
             </div>            
         </div>

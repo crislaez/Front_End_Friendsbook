@@ -8,6 +8,11 @@ import Nav from '../Components/Nav/Nav';
 import AsideLeft from '../Components/AsideLeft/AsideLeft';
 import AsideRight from '../Components/AsideRight/AsideRight';
 import Footer from '../Components/Footer/Footer';
+//componentes ventana
+import VentanaPerfil from '../Components/VentanaPerfil/VentanaPerfil';
+import VentanaNotificacion from '../Components/VentanaNotificacion/VentanaNotificacion';
+import VentanaChat from '../Components/VentanaChat/VentanaChat';
+import VentanaPlus from '../Components/VentanaPlus/VentanaPlus';
 //pages
 import Login from '../Pages/Login/Login';
 import Inicio from '../Pages/Inicio/Inicio';
@@ -19,8 +24,13 @@ function App(props){
     
     const [isLogin, setIslogin] = useState(false);
     const [mostrarHeader, setMostrarHeader] = useState(true);
-    const [datosUsuarioLogueado, setDatosUsuarioLogueado] = useState([])
-
+    const [datosUsuarioLogueado, setDatosUsuarioLogueado] = useState([]);   
+   
+    const [variableVentanaPlus, setVariableVentanaPlus] = useState(false)//variable que hara aparecer la ventana de plus
+    const [variableVentanaChat, setVariableVentanaChat] = useState(false)//variable que hara aparecer la ventana de chat
+    const [variableVentanaNotificaciones, setVariableVentanaNotificaciones] = useState(false)//variable que hara aparecer la ventana de notificaciones
+    const [variableVentanaPerfil, setVariableVentanaPerfil] = useState(false)//variable que hara aparecer la ventana de perfil
+    
 
     useEffect(() => {
         if(localStorage.getItem('primaryfriendsbook')){
@@ -49,6 +59,44 @@ function App(props){
         }        
     };
 
+    //funcion para qeu aparezca o desaparezca la ventana chat
+    const funcionAparecerVentanaPlus = () => {
+        setVariableVentanaPlus(!variableVentanaPlus);
+
+        setVariableVentanaChat(false);
+        setVariableVentanaNotificaciones(false);
+        setVariableVentanaPerfil(false);
+    };
+
+    //funcion para qeu aparezca o desaparezca la ventana chat
+     const funcionAparecerVentanaChat = () => {
+        setVariableVentanaChat(!variableVentanaChat);
+
+        setVariableVentanaPlus(false);
+        setVariableVentanaNotificaciones(false);
+        setVariableVentanaPerfil(false);
+    };
+
+    //funcion para qeu aparezca o desaparezca la ventana notificaciones
+     const funcionAparecerVentanaNotificaciones = () => {
+        setVariableVentanaNotificaciones(!variableVentanaNotificaciones);
+
+        setVariableVentanaPlus(false);
+        setVariableVentanaChat(false);
+        setVariableVentanaPerfil(false);
+    };
+
+    //funcion para qeu aparezca o desaparezca la ventana perfil
+    const funcionAparecerVentanaPerfil = () => {
+        setVariableVentanaPerfil(!variableVentanaPerfil);
+
+        setVariableVentanaPlus(false);
+        setVariableVentanaChat(false);
+        setVariableVentanaNotificaciones(false);
+    };
+
+   
+
     return(
         <div>
             {
@@ -56,7 +104,14 @@ function App(props){
                 ?
                 <Header ocultarHeader={ocultarHeader}></Header>
                 :               
-                <Nav funcionDatosUsuarios={funcionDatosUsuarios} datosUsuarioLogueado={datosUsuarioLogueado}></Nav>
+                <Nav 
+                funcionDatosUsuarios={funcionDatosUsuarios} 
+                datosUsuarioLogueado={datosUsuarioLogueado}
+                funcionAparecerVentanaPerfil={funcionAparecerVentanaPerfil}
+                funcionAparecerVentanaNotificaciones={funcionAparecerVentanaNotificaciones}
+                funcionAparecerVentanaChat={funcionAparecerVentanaChat}
+                funcionAparecerVentanaPlus={funcionAparecerVentanaPlus}
+                ></Nav>
                 
             }
             <div className='contenedor'>
@@ -72,6 +127,42 @@ function App(props){
                 </div>
 
             }
+
+            {
+                variableVentanaPlus
+                ?
+                <VentanaPlus></VentanaPlus>
+                :
+                <div style={{display:'none'}}></div>
+            }
+
+            
+            {
+                variableVentanaChat
+                ?
+                <VentanaChat></VentanaChat>
+                :
+                <div style={{display:'none'}}></div>
+            }
+
+
+            {
+                variableVentanaNotificaciones
+                ?
+                <VentanaNotificacion></VentanaNotificacion>
+                :
+                <div style={{display:'none'}}></div>
+            }
+            
+
+            {
+                variableVentanaPerfil
+                ?
+                <VentanaPerfil datosUsuarioLogueado={datosUsuarioLogueado}></VentanaPerfil>
+                :
+                <div style={{display:'none'}}></div>
+            }
+           
                 <Switch>
                     <Route exact path='/'>{isLogin ? <Inicio ocultarHeader={ocultarHeader}></Inicio> : <Login></Login>}</Route>
 
@@ -79,7 +170,7 @@ function App(props){
 
                     <Route exact path='/login'><Login></Login></Route>
 
-                    <Route exact path='/perfil'><Perfil></Perfil></Route>
+                    <Route exact path='/perfil/:id'><Perfil ocultarHeader={ocultarHeader}></Perfil></Route>
 
                     <Route path='*'><div>ERROR 404</div></Route>
                 </Switch>

@@ -9,7 +9,7 @@ function Inicio(props){
         //llamamos a la funcion que esta en app apra ocultar el header
         const ocultarHeader = props.ocultarHeader;
         ocultarHeader();
-    },[])
+    },[]);
     
     return(
         <section className='divInicio'>
