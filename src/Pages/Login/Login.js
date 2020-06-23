@@ -59,19 +59,20 @@ function Login(props){
             formData.append("sexo", sexo); 
             formData.append("avatar", avatar); 
             formData.append("banner", banner); 
-
-            Services.addUser(formData)            
+            
+            //llamamos a la funcion addUser que esta en services para agregar usuario            
+            Services.addUser(formData)
             .then(response => {
                 console.log(response)
                 if(response.success){
                     swal ( "Ok","Registrado correctamente","success" );
                 }else{
                     swal ( "Oops","ha surgido un error","error" );
-                }
-                
+                }                
             })
             .catch(err => console.log(err))            
         }
+        //limpiamos los campos
         setNombre('');
         setApellido('');
         setCorreo('');
@@ -79,7 +80,7 @@ function Login(props){
         setNacimiento('');
         document.querySelector('#bAvatar').value='';
         document.querySelector('#bBanner').value='';
-    }
+    };
     
     return(
         <div className='divLogin'>

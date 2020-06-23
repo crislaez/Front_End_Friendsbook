@@ -1,7 +1,10 @@
 .asideRight{
-    width: 20%;
-    margin-left: 80%;
-    height: 100vh;
-    background: #1CC3F0;
+    width: 25%;
+    margin-left: 75%;
+    margin-top: 68px;
+    min-height: 800px;
+    overflow-y: scroll;
+    background: #DCDCDC;
+    /* background: #EFEFEF; */
     position: fixed;
 }

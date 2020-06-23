@@ -20,22 +20,25 @@ function App(props){
 
 
     useEffect(() => {
-        if(localStorage.getItem('primaryfrindsbook')){
+        if(localStorage.getItem('primaryfriendsbook')){
             setIslogin(true);
-            setMostrarHeader(false)
+            setMostrarHeader(false);
         }else{
             setIslogin(false);
             setMostrarHeader(true)
         }
     },[]);
 
+    const ocultarHeader = () => {
+        setMostrarHeader(false);
+    };
 
     return(
         <div>
             {
                 mostrarHeader
                 ?
-                <Header></Header>
+                <Header ocultarHeader={ocultarHeader}></Header>
                 :               
                 <Nav></Nav>
                 
@@ -54,9 +57,9 @@ function App(props){
 
             }
                 <Switch>
-                    <Route exact path='/'>{isLogin ? <Inicio></Inicio> : <Login></Login>}</Route>
+                    <Route exact path='/'>{isLogin ? <Inicio ocultarHeader={ocultarHeader}></Inicio> : <Login></Login>}</Route>
 
-                    <Route exact path='/inicio'><Inicio></Inicio></Route>
+                    <Route exact path='/inicio'><Inicio ocultarHeader={ocultarHeader}></Inicio></Route>
 
                     <Route exact path='/login'><Login></Login></Route>
 
