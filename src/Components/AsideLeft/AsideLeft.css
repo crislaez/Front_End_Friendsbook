@@ -1,9 +1,22 @@
 aside{
     width: 20%;
-    min-height: 800px;
+    height: 800px;
     margin-top: 68px;
-    overflow-y: scroll;
     background: #DCDCDC;
-    /* background: #EFEFEF; */
     position: fixed;
+}
+
+aside:hover{
+    overflow-y: scroll;
+}
+
+/* la barra completa */
+aside::-webkit-scrollbar{
+    width: 1%;
+    background: #ccc;
+    border-radius: 4px;
+}
+/* la barra que hace el scroll  */
+aside::-webkit-scrollbar-thumb{
+    background: #ABABAB;
 }

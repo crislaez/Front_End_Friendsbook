@@ -6,7 +6,7 @@ function AsideRight(props){
     
     return(
         <div className='asideRight'>
-            
+
         </div>
     )
 }

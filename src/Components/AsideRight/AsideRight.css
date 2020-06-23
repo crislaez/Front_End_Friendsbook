@@ -2,9 +2,21 @@
     width: 25%;
     margin-left: 75%;
     margin-top: 68px;
-    min-height: 800px;
-    overflow-y: scroll;
+    height: 800px;
     background: #DCDCDC;
-    /* background: #EFEFEF; */
     position: fixed;
+}
+
+.asideRight:hover{
+    overflow-y: scroll;
+}
+
+.asideRight::-webkit-scrollbar{
+    width: 1%;
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.asideRight::-webkit-scrollbar-thumb{
+    background: #ABABAB;
 }
