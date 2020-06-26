@@ -9,7 +9,7 @@ function VentanaPerfil(props){
     //funcion que nmos llevara al perfil del usuario logueado
     const handleClick = () => {
         props.history.push(`/perfil/${localStorage.getItem('primaryfriendsbook')}`);
-        window.location.reload(true)
+        window.location.reload(true);
     };
 
 

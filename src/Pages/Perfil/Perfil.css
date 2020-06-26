@@ -1,9 +1,78 @@
 .divPerfil{
-    width: 55%;
-    margin-left: 20%;
+    width: 100%;
+    /* margin-left: 20%; */
     margin-top: 68px;
     min-height: 800px;
     color: #4C4C4C;
     background: #EFEFEF;
     float: left;
+}
+.divCabeceraPerfil{
+    width: 100%;
+    height: 570px;
+    background: white;
+    float: left;
+}
+
+.divBannerPerfil{
+    width: 62%;
+    height: 380px;
+    margin-left: 19%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    float: left;
+}
+
+.divAvatarPerfil{
+    width: 18%;
+    height: 180px;
+    margin-left: 41%;
+    margin-top: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+}
+
+.divAvatarPerfil img{
+    width: 100%;
+    height: 180px;
+}
+
+.nombreUsuarioPerfil{
+    width: 54%;
+    height: 120px;
+    margin-left: 23%;
+    border-bottom: 2px solid #EEEEEE;
+    float: left;
+}
+
+.nombreUsuarioPerfil h3{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 35px;
+    color: black;
+    letter-spacing: 5px;
+}
+
+.divBotonesPerfil{
+    width: 54%;
+    height:65px;
+    margin-left: 23%;
+    /* background: blue; */
+    float: left;
+}
+
+.divBotonesPerfil input{
+    width: 20%;
+    height: 50px;
+    margin-top: 7px;
+    border-radius: 5px;
+    font-size: 20px;
+    border: none;
+    background: white;
+    cursor: pointer;
+}
+
+.divBotonesPerfil input:hover{
+    background: #EEEEEE;
 }

@@ -30,7 +30,7 @@ function App(props){
     const [variableVentanaChat, setVariableVentanaChat] = useState(false)//variable que hara aparecer la ventana de chat
     const [variableVentanaNotificaciones, setVariableVentanaNotificaciones] = useState(false)//variable que hara aparecer la ventana de notificaciones
     const [variableVentanaPerfil, setVariableVentanaPerfil] = useState(false)//variable que hara aparecer la ventana de perfil
-    
+    const [variableMostrarAsides, setVariableMostrarAsides] = useState(true);
 
     useEffect(() => {
         if(localStorage.getItem('primaryfriendsbook')){
@@ -46,6 +46,11 @@ function App(props){
     const ocultarHeader = () => {
         setMostrarHeader(false);
     };
+
+    //funcion para mostrar el header
+    const funcionMostrarHeader = () => {
+        setMostrarHeader(true);
+    }
 
     //fucnion que cargara los datos del usuario logueado
     const funcionDatosUsuarios = (data) => {
@@ -95,6 +100,15 @@ function App(props){
         setVariableVentanaNotificaciones(false);
     };
 
+    //funcion ocultara los asides
+    const funcionOcultarAsides = () => {
+        setVariableMostrarAsides(false);
+    };
+
+    //funcion para mostrar los asides
+    const funcionMostrarAsides = () => {
+        setVariableMostrarAsides(true);
+    };
    
 
     return(
@@ -122,8 +136,17 @@ function App(props){
                 <div style={{display:'none'}}></div>
                 :
                 <div>
-                    <AsideLeft></AsideLeft>
-                    <AsideRight></AsideRight>
+                {
+                    variableMostrarAsides
+                    ?
+                    <div>
+                        <AsideLeft></AsideLeft>
+                        <AsideRight></AsideRight>
+                    </div>
+                    :
+                    <div style={{display:'none'}}></div>
+                }
+                    
                 </div>
 
             }
@@ -164,13 +187,25 @@ function App(props){
             }
            
                 <Switch>
-                    <Route exact path='/'>{isLogin ? <Inicio ocultarHeader={ocultarHeader}></Inicio> : <Login></Login>}</Route>
+                    <Route exact path='/'>{isLogin ? <Inicio ocultarHeader={ocultarHeader} funcionMostrarAsides={funcionMostrarAsides}></Inicio> : <Login funcionMostrarHeader={funcionMostrarHeader}></Login>}</Route>
 
-                    <Route exact path='/inicio'><Inicio ocultarHeader={ocultarHeader}></Inicio></Route>
+                    <Route exact path='/inicio'>
+                    <Inicio 
+                    ocultarHeader={ocultarHeader} 
+                    funcionMostrarAsides={funcionMostrarAsides}
+                    ></Inicio></Route>
 
-                    <Route exact path='/login'><Login></Login></Route>
+                    <Route exact path='/login'>
+                    <Login 
+                    funcionMostrarHeader={funcionMostrarHeader}
+                    ></Login></Route>
 
-                    <Route exact path='/perfil/:id'><Perfil ocultarHeader={ocultarHeader}></Perfil></Route>
+                    <Route exact path='/perfil/:id'>
+                    <Perfil 
+                    ocultarHeader={ocultarHeader} 
+                    funcionOcultarAsides={funcionOcultarAsides}
+                    datosUsuarioLogueado={datosUsuarioLogueado}
+                    ></Perfil></Route>
 
                     <Route path='*'><div>ERROR 404</div></Route>
                 </Switch>

@@ -8,6 +8,6 @@
 .contenedor{
     width: 100%;
     min-height: 800px;
-    /* background: gray; */
+    background: #EFEFEF;
     float: left;
 }

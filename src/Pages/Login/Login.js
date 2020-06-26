@@ -20,6 +20,12 @@ function Login(props){
     const [mujer, setMujer] = useState('');
     const [avatar, setAvatar] = useState('');
     const [banner, setBanner] = useState('');
+    
+    useEffect( () => {
+        //llamamos a la funcion que esta en app para mostrar el header si estubiese ocultado
+        const funcionMostrarHeader = props.funcionMostrarHeader;
+        funcionMostrarHeader();
+    },[])
 
     const handleSubmit = (event) => {
         event.preventDefault();

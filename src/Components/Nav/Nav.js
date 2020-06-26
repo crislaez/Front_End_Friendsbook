@@ -32,8 +32,12 @@ function Nav(props){
 
     //funcion que nos lelvara a inicio
     const handleClickInicio = () => {
-        props.history.push('/inicio');
-        window.location.reload(true);
+        if(localStorage.getItem('primaryfriendsbook')){
+            props.history.push('/inicio');           
+        }else{
+            props.history.push('/login');
+        }
+        // window.location.reload(true);
     }
      //funcion cuando hagamos click en el label de flecha abajo
      const handleClickPlus = () => {
