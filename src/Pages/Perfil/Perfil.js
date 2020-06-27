@@ -7,17 +7,21 @@ import Services from '../../Services/Services';
 //componente
 import SubirFoto from '../../Components/SubirFoto/SubirFoto';
 import ContenedorFotos from '../../Components/ContenedorFotos/ContenedorFotos';
+//services
+import Sevices from '../../Services/Services';
 
 function Perfil(props){
 
-    const [arrayDatopsUsuarioPerfil, setArrayDatopsUsuarioPerfil] = useState([]);
+    const [arrayDatopsUsuarioPerfil, setArrayDatopsUsuarioPerfil] = useState([]); //se guardan los datos de quien vemos el perfil
+    
+    const [mostrarBotonesPerfilLogueado, setMostrarBotonesPerfilLogueado ] = useState(false);//si el perfil es del usuario logueado
+    const [margenBotones, setMargenBotones] = useState('');
+    const [arrayFotosUsaurio, setArrayFotosUsaurio ] = useState([]); //se guardaran las fotos del usuario
 
-    const[mostrarBotonesPerfilLogueado, setMostrarBotonesPerfilLogueado ] = useState(false);
-
-    const[mostrarComponeteSubirFoto, setMostrarComponeteSubirFoto] = useState(false);
-    const[mostrarContenedorFotos, setMostrarContenedorFotos] = useState(true);
-    const[mostrarContenedorVerAmigios, setMostrarContenedorVerAmigios] = useState(false);
-    const[mostrarComponenteEditarPerfil, setMostrarComponenteEditarPerfil] = useState(true);
+    const [mostrarComponeteSubirFoto, setMostrarComponeteSubirFoto] = useState(false); //cargara elk componente subir foto
+    const [mostrarContenedorFotos, setMostrarContenedorFotos] = useState(true); //caargara el componente de las fotos
+    const [mostrarContenedorVerAmigios, setMostrarContenedorVerAmigios] = useState(false); //cargara el componente de amigos
+    const [mostrarComponenteEditarPerfil, setMostrarComponenteEditarPerfil] = useState(true); //cargara el componente para editar
 
     
     useEffect( () => {
@@ -34,12 +38,15 @@ function Perfil(props){
 
 
 
+    //le pasamos el numero del usuario que viene desde la url
     const cargarDatosUsuarioPerfil = (id) => {
         //para msotrar los botones de subirfoto y editar
         if(id == localStorage.getItem('primaryfriendsbook')){
             setMostrarBotonesPerfilLogueado(true);
+            setMargenBotones('10%');
         }else{
             setMostrarBotonesPerfilLogueado(false);
+            setMargenBotones('30%');
         }
         
         Services.getUserById(id)
@@ -58,6 +65,20 @@ function Perfil(props){
             console.log(err)
         })
     };
+
+    //funcion  para cargar las fotos del usuarioo
+    const datosServicios = () => {
+        //cogemos el numero de la url
+        let id = window.location.href.split('/')[window.location.href.split('/').length-1];
+        Sevices.getImageByIdUser(id)
+        .then(response => {
+            if(response.success){
+                console.log(response.data);
+                setArrayFotosUsaurio(response.data)
+            }           
+        })
+        .catch(err => console.log(err))
+    }
 
     const handleClickAparecerSubirFoto = () => {
         setMostrarComponeteSubirFoto(!mostrarComponeteSubirFoto);
@@ -79,7 +100,7 @@ function Perfil(props){
 
                 <div className='divBannerPerfil' style={{background:`url(${arrayDatopsUsuarioPerfil.banner}) 0 0/100% 380px`}}>
                     <div className='divAvatarPerfil'>
-                        <img src={arrayDatopsUsuarioPerfil.avatar}></img>
+                        <img src={arrayDatopsUsuarioPerfil.avatar} alt='imagen_usuario'></img>
                     </div>
                 </div>
 
@@ -88,7 +109,7 @@ function Perfil(props){
                 </div>
 
                 <div className='divBotonesPerfil'>
-                    <input onClick={handleClickVerFotos} style={{marginLeft:'10%'}} type='button' value='Fotos'></input>
+                    <input onClick={handleClickVerFotos} style={{marginLeft:`${margenBotones}`}} type='button' value='Fotos'></input>
                     <input onClick={handleClickVerAmigos} type='button' value='Amigos'></input>
                    
                     {
@@ -109,18 +130,17 @@ function Perfil(props){
             {
                 mostrarComponeteSubirFoto
                 ?
-                <SubirFoto handleClickAparecerSubirFoto={handleClickAparecerSubirFoto}></SubirFoto>
+                <SubirFoto handleClickAparecerSubirFoto={handleClickAparecerSubirFoto} datosServicios={datosServicios}></SubirFoto>
                 :
                 <div style={{display:'none'}}></div>
-
             }
 
             {
                 mostrarContenedorFotos
                 ?
-                <ContenedorFotos datosUsuarioLogueado={props.datosUsuarioLogueado}></ContenedorFotos>
+                <ContenedorFotos datosUsuarioLogueado={props.datosUsuarioLogueado} datosServicios={datosServicios} arrayFotosUsaurio={arrayFotosUsaurio}></ContenedorFotos>
                 :
-                <div style={{display:'noner'}}></div>
+                <div style={{display:'none'}}></div>
             }
 
         </section>

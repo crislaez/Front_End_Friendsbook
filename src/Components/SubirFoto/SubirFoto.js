@@ -11,6 +11,7 @@ function SubirFoto(props){
     const [tituloFoto, setTituloFoto] = useState('');
     const [foto, setFoto] = useState('');
     
+    //funcion para subir las fotos
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -38,6 +39,9 @@ function SubirFoto(props){
                         //llamamos a la funcion que esta en app para cerrar el componente
                         const handleClickAparecerSubirFoto = props.handleClickAparecerSubirFoto
                         handleClickAparecerSubirFoto();
+                        //llamamos a la funcion que esta en perfil para cargar las fotos dle usuario
+                        const datosServicios = props.datosServicios;
+                        datosServicios();
                     }else{
                         swal('Oops','No se ha podido subir la foto','error');
                     }

@@ -1,9 +1,34 @@
 .divContenedorFotos{
-    width: 50%;
-    margin-left: 25%;
+    width: 58%;
+    margin-left: 21%;
     min-height: 300px;
     margin-top: 20px;
     border-radius: 5px;
     background: white;
     float: left;
+}
+
+.divFDotoContenedorFoto{
+    width: 100%;
+    height: 50px;
+    float: left;
+}
+
+.divFDotoContenedorFoto h3{
+    margin-left: 2%;
+    margin-top: 10px;
+}
+
+.divFotoContenedorFoto{
+    width: 23%;
+    margin: 8px;
+    height: 250px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+}
+
+.divFotoContenedorFoto img{
+    width: 100%;
+    height: 250px;
 }

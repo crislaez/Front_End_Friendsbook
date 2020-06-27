@@ -37,7 +37,7 @@ function Nav(props){
         }else{
             props.history.push('/login');
         }
-        // window.location.reload(true);
+        window.location.reload(true);
     }
      //funcion cuando hagamos click en el label de flecha abajo
      const handleClickPlus = () => {
@@ -70,7 +70,7 @@ function Nav(props){
         window.location.reload(true);
     };
 
-    console.log(props.datosUsuarioLogueado);
+    // console.log(props.datosUsuarioLogueado);
 
     return(
         <nav>
