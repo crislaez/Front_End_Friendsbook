@@ -1,0 +1,9 @@
+.divContenedorFotos{
+    width: 50%;
+    margin-left: 25%;
+    min-height: 300px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: white;
+    float: left;
+}

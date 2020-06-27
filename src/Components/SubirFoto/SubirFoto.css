@@ -14,5 +14,78 @@
     border-radius: 5px;
     margin-top: 100px;
     background: white;
-    /* float: left; */
+    float: left;
+}
+
+.divTituloSubirFoto{
+    width: 100%;
+    height: 70px;
+    /* background: greenyellow; */
+    border-bottom: 2px solid gray;
+}
+
+.divTituloSubirFoto h3{
+    margin-left: 37%;
+    margin-top: 20px;
+    font-size: 20px;
+    float: left;
+}
+
+.divTituloSubirFoto input{
+    width: 6%;
+    height: 30px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 25%;
+    border: none;
+    background: #3BC8FF;
+    color: white;
+    cursor: pointer;
+    float: left;
+}
+
+.divTituloSubirFoto input:hover{
+    background: #74D8FF;
+}
+
+.contenedorSubirFoto form{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    height: 400px;
+}
+
+.contenedorSubirFoto form input{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 60px;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.contenedorSubirFoto form label{
+    width: 25%;
+    margin-left: 5%;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.contenedorSubirFoto form input[type='file']{
+    width: 70%;
+}
+
+.contenedorSubirFoto form input[type='submit']{
+    border: none;
+    background: #3BC8FF;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    margin-top: 70px;
+    cursor: pointer;
+}
+
+.contenedorSubirFoto form input[type='submit']:hover{
+    background: #74D8FF;
 }

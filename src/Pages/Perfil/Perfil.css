@@ -10,7 +10,9 @@
 .divCabeceraPerfil{
     width: 100%;
     height: 570px;
-    background: white;
+    /* background: white; */
+    background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(179,179,179,0.6169818269104517) 18%, rgba(255,255,255,1) 100%);
     float: left;
 }
 
@@ -58,7 +60,6 @@
     width: 54%;
     height:65px;
     margin-left: 23%;
-    /* background: blue; */
     float: left;
 }
 
