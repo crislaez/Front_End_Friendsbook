@@ -21,11 +21,22 @@ const addImage = (data) => {
 const getImageByIdUser = (data) => {
     return fetch(process.env.REACT_APP_RUTA+'/getImageByIdUser/'+data, {method:'GET'}).then(data => data.json())
 }
+//imagen por ide de imagen
+const getImageByIdImage = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/getImageByIdImage/'+data, {method:'GET'}).then(data => data.json())
+}
+//borrar image
+const deteleImageByIdImage = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/deteleImageByIdImage/'+data,{method:'DELETE', headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
+}
+
 export default 
     {
         addUser,
         login,
         getUserById,
         addImage,
-        getImageByIdUser
+        getImageByIdUser,
+        getImageByIdImage,
+        deteleImageByIdImage
     }

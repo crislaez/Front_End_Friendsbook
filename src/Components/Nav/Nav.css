@@ -5,6 +5,7 @@ nav{
     position: fixed;
     color: #4C4C4C;
     border-bottom: 1px solid #E5E5E5;
+    z-index: 1;
     float: left;
 }
 

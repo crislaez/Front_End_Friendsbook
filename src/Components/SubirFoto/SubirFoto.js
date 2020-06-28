@@ -5,6 +5,8 @@ import './SubirFoto.css';
 import swal from 'sweetalert';
 //importamos los servicios
 import Services from '../../Services/Services';
+//fechas
+import moment from 'moment';
 
 function SubirFoto(props){
 
@@ -30,6 +32,8 @@ function SubirFoto(props){
                 formData.append('id_usuario',localStorage.getItem('primaryfriendsbook'));
                 formData.append('imagen',foto);
                 formData.append('titulo_imagen',tituloFoto);
+                formData.append('fecha_imagen', moment().format("DD-MM-YYYY"));
+
 
                 Services.addImage(formData)
                 .then(response => {

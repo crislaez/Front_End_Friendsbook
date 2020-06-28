@@ -24,6 +24,7 @@
     width: 23%;
     margin: 8px;
     height: 250px;
+    cursor: pointer;
     border-radius: 5px;
     overflow: hidden;
     float: left;

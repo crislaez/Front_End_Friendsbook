@@ -1,22 +1,103 @@
 .divFoto{
-    width: 100%;
+    width: 75%;
     height: 100vh;
     position: fixed;
-    z-index: 3;
-}
-
-.divDerechaFoto{
-    width: 75%;
-    height: 100%;
     background: rgba(0, 0, 0, 0.9);
-    float: left;
+    z-index: 1;
 }
 
 .divIzquierdaFoto{
-    width: 25%;
-    margin-top: 70px;
-    height: 100vh;
-    background: #F3F8FB;
-    /* background: green; */
+    width: 9%;
+    height: 100%;
     float: left;
+}
+
+
+.divFotoFoto{
+    width: 82%;
+    height: 100%;
+    float: left;
+}
+
+.divFotoFoto img{
+    width: 100%;
+    height: 100%;
+}
+
+.divDerechaFoto{
+    width: 25%;
+    margin-left: 75%;
+    margin-top: 60px;
+    height: 100vh;
+    position: fixed;
+    background: #F3F8FB;
+    z-index: 1;
+}
+
+.divDatosUsuarioFoto{
+    width: 94%;
+    margin-left: 3%;
+    height: 230px;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.divMegustaComentarios{
+    width: 94%;
+    margin-left: 3%;
+    height: 50px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.divImagenUsuarioFoto{
+    width: 9%;
+    margin-left: 2%;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid gray;
+    margin-top: 20px;
+    height: 40px;
+    float: left;
+}
+
+.divImagenUsuarioFoto img{
+    width: 100%;
+    height: 40px;
+}
+
+.divNombreUsuarioFoto{
+    margin-top: 20px;
+    margin-left: 3%;
+    float: left;
+}
+
+.divTituloFoto{
+    width: 100%;
+    height: 50px;
+    /* background: burlywood; */
+    margin-top: 10px;
+    float: left;
+}
+
+.divBotonBorrar{
+    width: 100%;
+    height: 50px;
+    /* background: burlywood; */
+    margin-top: 10px;
+    float: left;
+}
+
+.divBotonBorrar input{
+    width: 20%;
+    border-radius: 5px;
+    border: none;
+    background: #D5D5D5;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    height: 50px;
+}
+
+.divBotonBorrar input:hover{
+    background: #F0F0F0;
 }
