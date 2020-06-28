@@ -17,6 +17,8 @@ import VentanaPlus from '../Components/VentanaPlus/VentanaPlus';
 import Login from '../Pages/Login/Login';
 import Inicio from '../Pages/Inicio/Inicio';
 import Perfil from '../Pages/Perfil/Perfil';
+import Foto from '../Pages/Foto/Foto';
+
 //Services
 import Services from '../Services/Services';
 
@@ -24,6 +26,7 @@ function App(props){
     
     const [isLogin, setIslogin] = useState(false);
     const [mostrarHeader, setMostrarHeader] = useState(true);
+    
     const [datosUsuarioLogueado, setDatosUsuarioLogueado] = useState([]);   
    
     const [variableVentanaPlus, setVariableVentanaPlus] = useState(false)//variable que hara aparecer la ventana de plus
@@ -44,6 +47,11 @@ function App(props){
 
     //funcion para oculrtar el header cuando el usuario este logueado
     const ocultarHeader = () => {
+        setMostrarHeader(false);       
+    };
+
+    //funcion que ocultara el header y el nav para el componente foto
+    const funcionOcultaHeaderNav = () => {
         setMostrarHeader(false);
     };
 
@@ -117,7 +125,7 @@ function App(props){
                 mostrarHeader
                 ?
                 <Header ocultarHeader={ocultarHeader}></Header>
-                :               
+                :
                 <Nav 
                 funcionDatosUsuarios={funcionDatosUsuarios} 
                 datosUsuarioLogueado={datosUsuarioLogueado}
@@ -125,8 +133,7 @@ function App(props){
                 funcionAparecerVentanaNotificaciones={funcionAparecerVentanaNotificaciones}
                 funcionAparecerVentanaChat={funcionAparecerVentanaChat}
                 funcionAparecerVentanaPlus={funcionAparecerVentanaPlus}
-                ></Nav>
-                
+                ></Nav>               
             }
             <div className='contenedor'>
            
@@ -206,6 +213,10 @@ function App(props){
                     funcionOcultarAsides={funcionOcultarAsides}
                     datosUsuarioLogueado={datosUsuarioLogueado}
                     ></Perfil></Route>
+
+                    <Route exact path='/foto/:idUsuario/:idFoto'>
+                    <Foto 
+                    ></Foto></Route>
 
                     <Route path='*'><div>ERROR 404</div></Route>
                 </Switch>

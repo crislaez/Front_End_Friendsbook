@@ -1,18 +1,17 @@
 .divPerfil{
     width: 100%;
-    /* margin-left: 20%; */
     margin-top: 68px;
     min-height: 800px;
     color: #4C4C4C;
-    background: #EFEFEF;
+    background: #F3F8FB;
     float: left;
 }
 .divCabeceraPerfil{
     width: 100%;
     height: 570px;
-    /* background: white; */
-    background: rgb(2,0,36);
-background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(179,179,179,0.6169818269104517) 18%, rgba(255,255,255,1) 100%);
+    background: rgb(130,204,255);
+    background: linear-gradient(180deg, rgba(130,204,255,1) 0%, rgba(255,255,255,0.6169818269104517) 78%, rgba(255,255,255,1) 100%);
+    border-bottom: 1px solid #DCDCDC;
     float: left;
 }
 
@@ -75,5 +74,5 @@ background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(179,179,179,0.616981
 }
 
 .divBotonesPerfil input:hover{
-    background: #EEEEEE;
+    background: #F3F8FB;
 }
