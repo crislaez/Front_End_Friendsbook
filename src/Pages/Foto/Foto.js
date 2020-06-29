@@ -7,11 +7,19 @@ import Services from '../../Services/Services';
 //sweetalert
 import swal from 'sweetalert';
 
+//font awesome
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faThumbsUp, faComment} from '@fortawesome/free-regular-svg-icons'
+
 function Foto(props){
 
     const[idFoto, setIdFoto] = useState('');
     const[idUsaurio, setIdUsuario] = useState('');
-    const[arrayDatosFoto, setArrayDatosFoto] = useState([])
+    const[arrayDatosFoto, setArrayDatosFoto] = useState([]);
+
+    const [textoComentario, setTextoComentario] = useState(''); //mensaje del formulario
+
+    const[esFotoLogueado, setEsFotoLogueado] = useState(false)
 
     useEffect( () => {
 
@@ -20,6 +28,13 @@ function Foto(props){
         
         //llamamos a la funcion que esta abajo
         funcionDatosFoto(window.location.href.split('/')[window.location.href.split('/').length-1])
+
+        //el id que viene por la url es el mismo que el usuario logueado, esa varaible sera true
+        if(window.location.href.split('/')[window.location.href.split('/').length-2] == localStorage.getItem('primaryfriendsbook')){
+            setEsFotoLogueado(true);
+        }else{
+            setEsFotoLogueado(false);
+        }
     },[idFoto]);
 
     
@@ -63,6 +78,15 @@ function Foto(props){
         }        
     };
 
+    //funcion formulario comentario
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(idFoto +' id foto')
+        console.log(localStorage.getItem('primaryfriendsbook')+' usuario logueado')
+        console.log(textoComentario);
+        setTextoComentario('');
+    }
+
 
     return (
         <React.Fragment>
@@ -96,13 +120,43 @@ function Foto(props){
                     </div>
 
                     <div className='divBotonBorrar'>
+                    {
+                        esFotoLogueado
+                        ?
                         <input onClick={handleClick} type='button' value='Borrar'></input>
+                        :
+                        <div style={{display:'none'}}></div>
+
+                    }                        
                     </div>
+
+                    <div className='divIconoLikes'>
+                        <label className='labeLike'><FontAwesomeIcon icon={faThumbsUp} style={{color:'white', marginLeft:'15%', marginTop:'4px'}}></FontAwesomeIcon></label>
+                        <label className='labelCantidadComentarios'>0 comentario</label>
+                    </div>                    
+
                 </div>
 
                 <div className='divMegustaComentarios'>
+                    <div className='cajitaIconos'>
+                        <label><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon></label>
+                        <p>Me gusta</p>
+                    </div>
+
+                    <div className='cajitaIconos'>
+                        <label><FontAwesomeIcon icon={faComment}></FontAwesomeIcon></label>
+                        <p>Comentar</p>
+                    </div>
                 </div>
+                
+                <form onSubmit={handleSubmit} action='' method='' encType=''>
+                    <div className='divFotoUsuarioFormulario'>
+                        <img src={props.datosUsuarioLogueado.avatar} alt={props.datosUsuarioLogueado.avatar}></img>
+                    </div>
+                    <input type='text' value={textoComentario} onChange={params => setTextoComentario(params.target.value)} placeholder='Escribe un comentario...'></input>
+                </form>
             </div>
+
         </React.Fragment>
     )
 }

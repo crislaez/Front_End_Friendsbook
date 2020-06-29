@@ -216,6 +216,7 @@ function App(props){
 
                     <Route exact path='/foto/:idUsuario/:idFoto'>
                     <Foto 
+                    datosUsuarioLogueado={datosUsuarioLogueado}
                     ></Foto></Route>
 
                     <Route path='*'><div>ERROR 404</div></Route>
