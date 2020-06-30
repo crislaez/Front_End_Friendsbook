@@ -6,20 +6,19 @@ import './Foto.css';
 import Services from '../../Services/Services';
 //sweetalert
 import swal from 'sweetalert';
-
 //font awesome
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faThumbsUp, faComment} from '@fortawesome/free-regular-svg-icons'
+import {faThumbsUp, faComment} from '@fortawesome/free-regular-svg-icons';
+//componente
+import Comentarios from '../../Components/Comentarios/Comentarios';
 
 function Foto(props){
 
-    const[idFoto, setIdFoto] = useState('');
-    const[idUsaurio, setIdUsuario] = useState('');
-    const[arrayDatosFoto, setArrayDatosFoto] = useState([]);
-
-    const [textoComentario, setTextoComentario] = useState(''); //mensaje del formulario
-
-    const[esFotoLogueado, setEsFotoLogueado] = useState(false)
+    const [idFoto, setIdFoto] = useState('');
+    const [idUsaurio, setIdUsuario] = useState('');
+    const [arrayDatosFoto, setArrayDatosFoto] = useState([]);//datos del usuario del que vemos la foto
+    
+    const[esFotoLogueado, setEsFotoLogueado] = useState(false); //para mostrar el boton borrar foto
 
     useEffect( () => {
 
@@ -29,6 +28,7 @@ function Foto(props){
         //llamamos a la funcion que esta abajo
         funcionDatosFoto(window.location.href.split('/')[window.location.href.split('/').length-1])
 
+        
         //el id que viene por la url es el mismo que el usuario logueado, esa varaible sera true
         if(window.location.href.split('/')[window.location.href.split('/').length-2] == localStorage.getItem('primaryfriendsbook')){
             setEsFotoLogueado(true);
@@ -49,7 +49,7 @@ function Foto(props){
         })
         .catch(err => console.log(err))
     };
-
+    
     //funcion para borrar la foto
     const handleClick = () => {
         if(localStorage.getItem('primaryfriendsbook')){
@@ -77,15 +77,6 @@ function Foto(props){
             });           
         }        
     };
-
-    //funcion formulario comentario
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(idFoto +' id foto')
-        console.log(localStorage.getItem('primaryfriendsbook')+' usuario logueado')
-        console.log(textoComentario);
-        setTextoComentario('');
-    }
 
 
     return (
@@ -132,6 +123,7 @@ function Foto(props){
 
                     <div className='divIconoLikes'>
                         <label className='labeLike'><FontAwesomeIcon icon={faThumbsUp} style={{color:'white', marginLeft:'15%', marginTop:'4px'}}></FontAwesomeIcon></label>
+                        <label style={{marginLeft:'2%', marginTop:'7px', float:'left', fontSize:'20px'}}>0</label>
                         <label className='labelCantidadComentarios'>0 comentario</label>
                     </div>                    
 
@@ -149,12 +141,8 @@ function Foto(props){
                     </div>
                 </div>
                 
-                <form onSubmit={handleSubmit} action='' method='' encType=''>
-                    <div className='divFotoUsuarioFormulario'>
-                        <img src={props.datosUsuarioLogueado.avatar} alt={props.datosUsuarioLogueado.avatar}></img>
-                    </div>
-                    <input type='text' value={textoComentario} onChange={params => setTextoComentario(params.target.value)} placeholder='Escribe un comentario...'></input>
-                </form>
+                <Comentarios datosUsuarioLogueado={props.datosUsuarioLogueado} idFoto={idFoto}></Comentarios>
+               
             </div>
 
         </React.Fragment>

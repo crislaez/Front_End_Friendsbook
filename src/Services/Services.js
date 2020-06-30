@@ -29,6 +29,14 @@ const getImageByIdImage = (data) => {
 const deteleImageByIdImage = (data) => {
     return fetch(process.env.REACT_APP_RUTA+'/deteleImageByIdImage/'+data,{method:'DELETE', headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
 }
+//agregar comentario
+const addComent = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/addComent',{method:'POST', body:data,headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
+}
+//comentarios por ide de foto
+const getComentsByIdImage = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/getComentsByIdImage/'+data, {method:'GET'}).then(data => data.json())
+}
 
 export default 
     {
@@ -38,5 +46,7 @@ export default
         addImage,
         getImageByIdUser,
         getImageByIdImage,
-        deteleImageByIdImage
+        deteleImageByIdImage,
+        addComent,
+        getComentsByIdImage
     }

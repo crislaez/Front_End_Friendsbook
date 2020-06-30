@@ -57,5 +57,40 @@
     width: 90%;
     height: 350px;
     margin-left: 5%;
-    /* border-bottom: 3px solid #EFEFEF; */
+}
+
+.divVentanaPerfil label{
+    width: 12%;
+    height: 40px;
+    margin-top: 10px;
+    background: #E7E7E7;
+    overflow: hidden;
+    border-radius: 50%;
+    float: left;
+}
+
+.divDatosVentanaPerfil{
+    width: 85%;
+    margin-left: 2%;
+    height: 85px;
+    margin-top: 5px;
+    cursor: pointer;
+    float: left;
+}
+
+.divDatosVentanaPerfil:hover{
+    background: #F4F4F4;
+}
+
+.divDatosVentanaPerfilSub{
+    width: 85%;
+    margin-left: 2%;
+    height: 65px;
+    margin-top: 5px;
+    cursor: pointer;
+    float: left;
+}
+
+.divDatosVentanaPerfilSub:hover{
+    background: #F4F4F4;
 }
