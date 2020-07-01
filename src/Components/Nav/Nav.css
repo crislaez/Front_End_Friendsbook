@@ -37,6 +37,7 @@ nav{
     border-radius: 30px;
     overflow: hidden;
     border: none;
+    background: #F7F7F7;
     float: left;
 }
 
@@ -47,21 +48,25 @@ nav{
     border-radius: 30px;
     font-size: 20px;
     border: none;
-    background: #F7F7F7;
+    background: none;
     position: absolute;
 }
 
 .divIzquierdaNav form input[type='text']{
-    width: 100%;
+    width: 90%;
     height: 45px;
     border-radius: 30px;
+    margin-left: 10%;
     border: none;
     background: #F7F7F7;
-    /* float: left; */
 }
 
 .divIzquierdaNav form input[type='text']::placeholder{
    text-align: center;    
+}
+
+.divIzquierdaNav form input[type='text']:focus{
+    outline : none;
 }
 
 .divCenterNav{

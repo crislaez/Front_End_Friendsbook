@@ -37,6 +37,14 @@ const addComent = (data) => {
 const getComentsByIdImage = (data) => {
     return fetch(process.env.REACT_APP_RUTA+'/getComentsByIdImage/'+data, {method:'GET'}).then(data => data.json())
 }
+//buscar usuarios
+const getUserBySearch = (data, data2) => {
+    return fetch(process.env.REACT_APP_RUTA+'/getUserBySearch/'+data+'/'+data2, {method:'GET'}).then(data => data.json())
+}
+//agregar seguimiento
+const adFollow = (data) => {
+    return fetch('/adFollow',{method:'POST', body:data, header:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}})
+}
 
 export default 
     {
@@ -48,5 +56,6 @@ export default
         getImageByIdImage,
         deteleImageByIdImage,
         addComent,
-        getComentsByIdImage
+        getComentsByIdImage,getUserBySearch,
+        adFollow
     }

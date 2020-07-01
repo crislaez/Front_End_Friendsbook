@@ -8,11 +8,17 @@ import Logo from '../../Img/logo.png';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch, faHome, faStore, faUser, faDiceFive, faPlus, faComments, faBell, faArrowAltCircleDown} from '@fortawesome/free-solid-svg-icons';
 import {faYoutube} from '@fortawesome/free-brands-svg-icons';
+//Services
+import Sevices from '../../Services/Services';
+//componente
+import VentanaBuscador from '../VentanaBuscador/VentanaBuscador';
 
 
 function Nav(props){
     
     const [textoBuscador, setTextoBuscador] = useState('');
+    const [aparecerDivBuscador, setAparecerDivBuscador] = useState(false);
+    const [arrayDatosBuscador, setArrayDatosBuscador] = useState([]);
 
     useEffect( () => {
         //llamamos a la funcion que esta en app para cargar los datos dle usuario logueado
@@ -24,12 +30,29 @@ function Nav(props){
     },[localStorage.getItem('primaryfriendsbook')]);
 
 
+    //funcion buscar usuiarios
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(textoBuscador);
+        let nombre = textoBuscador.split(' ')[0];
+        let apellido = textoBuscador.split(' ')[1];
+
+        Sevices.getUserBySearch(nombre,apellido)
+        .then(response => {
+            if(response.success){
+                console.log(response.data)
+                setAparecerDivBuscador(true)
+                setArrayDatosBuscador(response.data);
+            }else{
+                console.log('no sew encontro usuarios')
+            }
+            
+        })
         setTextoBuscador('');
     };
-
+    //funcion para cerrar la ventana del buscador
+    const funcionCerrarVentanaBuscador = () => {
+        setAparecerDivBuscador(false);
+    };
     //funcion que nos lelvara a inicio
     const handleClickInicio = () => {
         if(localStorage.getItem('primaryfriendsbook')){
@@ -81,9 +104,18 @@ function Nav(props){
 
                 <form onSubmit={handleSubmit} action='' method='' encType=''>
                     <button type='submit'><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
-                    <input type='text' value={textoBuscador} name='buscar' onChange={(params) => {setTextoBuscador(params.target.value)}} placeholder='Buscar en Friendbook'></input>                    
+                    <input onFocus={() => setAparecerDivBuscador(false)} type='text' value={textoBuscador} name='buscar' onChange={(params) => {setTextoBuscador(params.target.value)}} placeholder='Buscar en Friendbook'></input>                    
                 </form>
             </div>
+
+            {
+                aparecerDivBuscador
+                ?
+                <VentanaBuscador arrayDatosBuscador={arrayDatosBuscador} funcionCerrarVentanaBuscador={funcionCerrarVentanaBuscador}></VentanaBuscador>
+                :               
+                <div style={{display:'none'}}></div>
+            }
+            
             
             <div className='divCenterNav'>
                 <label onClick={handleClickInicio} style={{marginLeft:'16%'}}><FontAwesomeIcon icon={faHome} ></FontAwesomeIcon></label>

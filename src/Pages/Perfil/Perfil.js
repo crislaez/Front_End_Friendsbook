@@ -22,7 +22,7 @@ function Perfil(props){
     const [mostrarContenedorFotos, setMostrarContenedorFotos] = useState(true); //caargara el componente de las fotos
     const [mostrarContenedorVerAmigios, setMostrarContenedorVerAmigios] = useState(false); //cargara el componente de amigos
     const [mostrarComponenteEditarPerfil, setMostrarComponenteEditarPerfil] = useState(true); //cargara el componente para editar
-
+    
     
     useEffect( () => {
         //llamamos a la funcion que esta en app apra ocultar el header
@@ -106,6 +106,14 @@ function Perfil(props){
 
                 <div className='nombreUsuarioPerfil'>
                     <h3>{arrayDatopsUsuarioPerfil.nombre} {arrayDatopsUsuarioPerfil.apellido}</h3>
+                    {
+                        mostrarBotonesPerfilLogueado
+                        ?
+                        <div style={{display:'none'}}></div>
+                        :
+                        <input type='button' value='Seguir'></input>
+                    }
+                    
                 </div>
 
                 <div className='divBotonesPerfil'>
