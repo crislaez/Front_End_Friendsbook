@@ -42,8 +42,20 @@ const getUserBySearch = (data, data2) => {
     return fetch(process.env.REACT_APP_RUTA+'/getUserBySearch/'+data+'/'+data2, {method:'GET'}).then(data => data.json())
 }
 //agregar seguimiento
-const adFollow = (data) => {
-    return fetch('/adFollow',{method:'POST', body:data, header:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}})
+const addFollow = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/addFollow',{method:'POST', body:data, headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
+}
+//comprobar seguimiento
+const chechkFollow = (data, data2) => {
+    return fetch(process.env.REACT_APP_RUTA+'/chechkFollow/'+data+'/'+data2, {method:'GET'}).then(data => data.json())
+}
+//dejar de seguir
+const unFollow = (data, data2) => {
+    return fetch(process.env.REACT_APP_RUTA+'/unFollow/'+data+'/'+data2,{method:'DELETE', headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
+}
+//conseguir todas las fotos
+const getAllImage = () => {
+    return fetch(process.env.REACT_APP_RUTA+'/getAllImage',{method:'GET'}).then(data => data.json())
 }
 
 export default 
@@ -57,5 +69,8 @@ export default
         deteleImageByIdImage,
         addComent,
         getComentsByIdImage,getUserBySearch,
-        adFollow
+        addFollow,
+        chechkFollow,
+        unFollow,
+        getAllImage
     }

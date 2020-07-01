@@ -7,8 +7,10 @@ import Services from '../../Services/Services';
 //componente
 import SubirFoto from '../../Components/SubirFoto/SubirFoto';
 import ContenedorFotos from '../../Components/ContenedorFotos/ContenedorFotos';
+import BotonesSeguir from '../../Components/BotonesSeguir/BotonesSeguir';
 //services
 import Sevices from '../../Services/Services';
+
 
 function Perfil(props){
 
@@ -18,8 +20,8 @@ function Perfil(props){
     const [margenBotones, setMargenBotones] = useState('');
     const [arrayFotosUsaurio, setArrayFotosUsaurio ] = useState([]); //se guardaran las fotos del usuario
 
-    const [mostrarComponeteSubirFoto, setMostrarComponeteSubirFoto] = useState(false); //cargara elk componente subir foto
-    const [mostrarContenedorFotos, setMostrarContenedorFotos] = useState(true); //caargara el componente de las fotos
+    const [mostrarComponeteSubirFoto, setMostrarComponeteSubirFoto] = useState(false); //cargara el componente subir foto
+    const [mostrarContenedorFotos, setMostrarContenedorFotos] = useState(true); //cargara el componente de las fotos
     const [mostrarContenedorVerAmigios, setMostrarContenedorVerAmigios] = useState(false); //cargara el componente de amigos
     const [mostrarComponenteEditarPerfil, setMostrarComponenteEditarPerfil] = useState(true); //cargara el componente para editar
     
@@ -106,14 +108,8 @@ function Perfil(props){
 
                 <div className='nombreUsuarioPerfil'>
                     <h3>{arrayDatopsUsuarioPerfil.nombre} {arrayDatopsUsuarioPerfil.apellido}</h3>
-                    {
-                        mostrarBotonesPerfilLogueado
-                        ?
-                        <div style={{display:'none'}}></div>
-                        :
-                        <input type='button' value='Seguir'></input>
-                    }
                     
+                    <BotonesSeguir mostrarBotonesPerfilLogueado={mostrarBotonesPerfilLogueado} arrayDatopsUsuarioPerfil={arrayDatopsUsuarioPerfil}></BotonesSeguir>
                 </div>
 
                 <div className='divBotonesPerfil'>

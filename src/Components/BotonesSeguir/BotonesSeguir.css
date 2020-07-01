@@ -1,0 +1,19 @@
+.nombreUsuarioPerfil input{
+    width: 20%;
+    height: 40px;
+    margin-top: 50px;
+    background: #2F85FC;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    float: right;
+}
+
+.nombreUsuarioPerfil input:hover{
+    background:#78C8F7;
+}
+
+.nombreUsuarioPerfil input:focus{
+    outline : none;
+}
