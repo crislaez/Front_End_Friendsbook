@@ -11,6 +11,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faThumbsUp, faComment} from '@fortawesome/free-regular-svg-icons';
 //componente
 import Comentarios from '../../Components/Comentarios/Comentarios';
+import LikeComentario from '../../Components/LikeComentario/LikeComentario';
+
 
 function Foto(props){
 
@@ -119,27 +121,10 @@ function Foto(props){
                         <div style={{display:'none'}}></div>
 
                     }                        
-                    </div>
+                    </div>                                     
 
-                    <div className='divIconoLikes'>
-                        <label className='labeLike'><FontAwesomeIcon icon={faThumbsUp} style={{color:'white', marginLeft:'15%', marginTop:'4px'}}></FontAwesomeIcon></label>
-                        <label style={{marginLeft:'2%', marginTop:'7px', float:'left', fontSize:'20px'}}>0</label>
-                        <label className='labelCantidadComentarios'>0 comentario</label>
-                    </div>                    
-
-                </div>
-
-                <div className='divMegustaComentarios'>
-                    <div className='cajitaIconos'>
-                        <label><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon></label>
-                        <p>Me gusta</p>
-                    </div>
-
-                    <div className='cajitaIconos'>
-                        <label><FontAwesomeIcon icon={faComment}></FontAwesomeIcon></label>
-                        <p>Comentar</p>
-                    </div>
-                </div>
+                    <LikeComentario idFoto={idFoto} largoLabelLike='5.5%'></LikeComentario>
+                </div>       
                 
                 <Comentarios datosUsuarioLogueado={props.datosUsuarioLogueado} idFoto={idFoto}></Comentarios>
                
@@ -150,3 +135,5 @@ function Foto(props){
 }
 
 export default withRouter(Foto);
+
+// <LikeComentario></LikeComentario>

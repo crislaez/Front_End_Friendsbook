@@ -1,0 +1,43 @@
+
+.formularioFormularioComentar{
+    width: 94%;
+    margin-left: 3%;
+    height: 50px;
+    overflow: hidden;
+    margin-top: 10px;
+    /* background: violet; */
+    float: left;
+}
+
+.formularioFormularioComentar input{
+    margin-left: 2%;
+    border-radius: 15px;
+    width: 85%;
+    height: 40px;
+    border: none;
+    background:#E2E9F3;
+    margin-top: 5px;
+}
+
+.formularioFormularioComentar input::placeholder{
+    text-align: center;
+}
+
+.formularioFormularioComentar input:focus{
+    outline : none;
+}
+
+.divFotoUsuarioFormulario{
+    width: 9%;
+    margin-top: 10px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 50px;
+    border: 2px solid #2F85FC;
+    float: left;
+}
+
+.divFotoUsuarioFormulario img{
+    width: 100%;
+    height: 35px;
+}

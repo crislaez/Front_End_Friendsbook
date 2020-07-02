@@ -194,12 +194,20 @@ function App(props){
             }
            
                 <Switch>
-                    <Route exact path='/'>{isLogin ? <Inicio ocultarHeader={ocultarHeader} funcionMostrarAsides={funcionMostrarAsides}></Inicio> : <Login funcionMostrarHeader={funcionMostrarHeader}></Login>}</Route>
+                    <Route exact path='/'>
+                        {isLogin 
+                        ? 
+                        <Inicio ocultarHeader={ocultarHeader} funcionMostrarAsides={funcionMostrarAsides} datosUsuarioLogueado={datosUsuarioLogueado}></Inicio> 
+                        : 
+                        <Login funcionMostrarHeader={funcionMostrarHeader}></Login>
+                        }
+                    </Route>
 
                     <Route exact path='/inicio'>
                     <Inicio 
                     ocultarHeader={ocultarHeader} 
                     funcionMostrarAsides={funcionMostrarAsides}
+                    datosUsuarioLogueado={datosUsuarioLogueado}
                     ></Inicio></Route>
 
                     <Route exact path='/login'>
