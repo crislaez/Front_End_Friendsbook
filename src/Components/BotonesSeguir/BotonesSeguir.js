@@ -24,7 +24,7 @@ function BotonesSeguir(props){
     const funcionComprobarSeguimiento = (idSeguido) => {
         Services.chechkFollow(idSeguido,localStorage.getItem('primaryfriendsbook'))
         .then(response => {
-            if(response.success){
+            if(response.data.toString()){
                 console.log(response)
                 console.log('le sigues')
                 setCambiarABotonSeguir(true);

@@ -8,6 +8,7 @@ import Nav from '../Components/Nav/Nav';
 import AsideLeft from '../Components/AsideLeft/AsideLeft';
 import AsideRight from '../Components/AsideRight/AsideRight';
 import Footer from '../Components/Footer/Footer';
+import Chat from '../Components/Chat/Chat';
 //componentes ventana
 import VentanaPerfil from '../Components/VentanaPerfil/VentanaPerfil';
 import VentanaNotificacion from '../Components/VentanaNotificacion/VentanaNotificacion';
@@ -28,12 +29,16 @@ function App(props){
     const [mostrarHeader, setMostrarHeader] = useState(true);
     
     const [datosUsuarioLogueado, setDatosUsuarioLogueado] = useState([]);   
+
+    const [arrayUsuariosSeguidos, setArrayUsuariosSeguidos] = useState([]);//array donde se guardaran los usuarios seguidos
    
     const [variableVentanaPlus, setVariableVentanaPlus] = useState(false)//variable que hara aparecer la ventana de plus
     const [variableVentanaChat, setVariableVentanaChat] = useState(false)//variable que hara aparecer la ventana de chat
     const [variableVentanaNotificaciones, setVariableVentanaNotificaciones] = useState(false)//variable que hara aparecer la ventana de notificaciones
     const [variableVentanaPerfil, setVariableVentanaPerfil] = useState(false)//variable que hara aparecer la ventana de perfil
     const [variableMostrarAsides, setVariableMostrarAsides] = useState(true);
+    const [mostrarChat, setMostrarChat] = useState(false);//varaible para mostrar el chat
+    const [idUaurioChat, setIdUaurioChat] = useState('');
 
     useEffect(() => {
         if(localStorage.getItem('primaryfriendsbook')){
@@ -117,6 +122,24 @@ function App(props){
     const funcionMostrarAsides = () => {
         setVariableMostrarAsides(true);
     };
+
+     //funcion para obtener a los usuarios qune sigo
+     const funcionUsuariosSeguidos = () => {
+         Services.getFollowUsers(localStorage.getItem('primaryfriendsbook'))
+         .then(response => setArrayUsuariosSeguidos(response.data))
+         .catch(err => console.log(err));
+     };
+
+     //funcion para el chat desde asideRight
+     const funcionUsuarioChat = (idUsuario) => {
+        setMostrarChat(true);
+        setIdUaurioChat(idUsuario)
+    };
+
+    //funcion para ocultar el chat
+    const funccionOcultarChat = () => {
+        setMostrarChat(false);
+    };
    
 
     return(
@@ -148,7 +171,7 @@ function App(props){
                     ?
                     <div>
                         <AsideLeft></AsideLeft>
-                        <AsideRight></AsideRight>
+                        <AsideRight funcionUsuariosSeguidos={funcionUsuariosSeguidos} arrayUsuariosSeguidos={arrayUsuariosSeguidos} funcionUsuarioChat={funcionUsuarioChat}></AsideRight>
                     </div>
                     :
                     <div style={{display:'none'}}></div>
@@ -192,6 +215,15 @@ function App(props){
                 :
                 <div style={{display:'none'}}></div>
             }
+
+            {
+                mostrarChat
+                ?
+                <Chat funccionOcultarChat={funccionOcultarChat} idUaurioChat={idUaurioChat}></Chat>
+                :
+                <div style={{display:'none'}}></div>
+            }
+            
            
                 <Switch>
                     <Route exact path='/'>

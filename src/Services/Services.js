@@ -57,6 +57,10 @@ const unFollow = (data, data2) => {
 const getAllImage = () => {
     return fetch(process.env.REACT_APP_RUTA+'/getAllImage',{method:'GET'}).then(data => data.json())
 }
+//usuarios que se suigue
+const getFollowUsers = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/getFollowUsers/'+data, {method:'GET'}).then(data => data.json())
+}
 
 export default 
     {
@@ -72,5 +76,6 @@ export default
         addFollow,
         chechkFollow,
         unFollow,
-        getAllImage
+        getAllImage,
+        getFollowUsers
     }

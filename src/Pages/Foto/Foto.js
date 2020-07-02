@@ -80,6 +80,11 @@ function Foto(props){
         }        
     };
 
+    const handleClickIrPerfil = (idUsuario) => {
+        // console.log(idUsuario)
+        props.history.push('/perfil/'+idUsuario);
+    }
+
 
     return (
         <React.Fragment>
@@ -100,7 +105,7 @@ function Foto(props){
             <div className='divDerechaFoto'>
                 <div className='divDatosUsuarioFoto'>
                     <div className='divImagenUsuarioFoto'>
-                        <img src={arrayDatosFoto.avatar} alt='fotoUsuario'></img>
+                        <img onClick={() => handleClickIrPerfil(arrayDatosFoto.id_usuario)} src={arrayDatosFoto.avatar} alt='fotoUsuario'></img>
                     </div>
 
                     <div className='divNombreUsuarioFoto'>
@@ -135,5 +140,3 @@ function Foto(props){
 }
 
 export default withRouter(Foto);
-
-// <LikeComentario></LikeComentario>

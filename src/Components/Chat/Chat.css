@@ -1,0 +1,86 @@
+.divChat{
+    width: 21%;
+    height: 500px;
+    position: fixed;
+    box-shadow: 0px 0px 20px gray;
+    background: white;
+    margin-top: 290px;
+    margin-left: 78%;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.tituloChat{
+    width: 100%;
+    height: 50px;
+    box-shadow: 0px 2px 3px gray;
+}
+
+.imagenUsuarioChat{
+    width: 12%;
+    height: 40px;
+    margin-top: 5px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 2%;
+    float: left;
+}
+
+.imagenUsuarioChat img{
+    width: 100%;
+    height: 40px;
+}
+
+.tituloChat p{
+    margin-left: 2%;
+    margin-top: 15px;
+    float: left;
+}
+
+.tituloChat input{
+    width: 10%;
+    height: 40px;
+    margin-top: 5px;
+    /* margin-left: 35%; */
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    color: #2F85FC;
+    cursor: pointer;
+    background: none;
+    float: right;
+}
+
+.tituloChat input:focus{
+    outline : none;
+}
+
+.contenedorChat{
+    width: 100%;
+    height: 395px;
+    background: greenyellow;
+    float: left;
+}
+
+.divChat form{
+    width: 100%;
+    height: 55px;
+    float: left;
+}
+
+.divChat form input{
+    width: 90%;
+    height: 40px;
+    margin-top:5px;
+    margin-left: 5%;
+    border-radius: 20px;
+    background: #F7F7F7;
+    border: none;
+}
+
+.divChat form input:focus{
+    outline : none;
+}
+.divChat form input::placeholder{
+    text-align: center;
+}
