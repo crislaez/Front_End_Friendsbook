@@ -61,7 +61,14 @@ const getAllImage = () => {
 const getFollowUsers = (data) => {
     return fetch(process.env.REACT_APP_RUTA+'/getFollowUsers/'+data, {method:'GET'}).then(data => data.json())
 }
-
+//ingresar mensaje chat
+const addChat = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/addChat',{method:'POST', body:data, headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
+}
+//mostrar chat por usuarios
+const getChatByIdUSers = (data, data2) => {
+    return fetch(process.env.REACT_APP_RUTA+'/getChatByIdUSers/'+data+'/'+data2,{method:'GET'}).then(data => data.json())
+}
 export default 
     {
         addUser,
@@ -77,5 +84,7 @@ export default
         chechkFollow,
         unFollow,
         getAllImage,
-        getFollowUsers
+        getFollowUsers,
+        addChat,
+        getChatByIdUSers
     }
