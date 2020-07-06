@@ -29,6 +29,25 @@ function AsideRight(props){
 
             <div className='divPublicidad'>
                 <h3>Publicidad</h3>
+
+                <div className='divPublicidadArriva'>
+                    <div className='divPublicidadImagen'>
+                        <img src={require('../../Img/publicidad1.jpg')}></img>
+                    </div>
+                    <div className='divPublicidadTItulo'>
+                        <p>Curso de Programacion web Frontend</p>
+                    </div>
+                </div>
+
+                <div className='divPublicidadArriva'>
+                    <div className='divPublicidadImagen'>
+                        <img src={require('../../Img/publicidad2.jpg')}></img>
+                    </div>
+                    <div className='divPublicidadTItulo'>
+                        <p>Cursos gratuitus en udemy</p>
+                    </div>
+                </div>
+                
             </div>
 
             <div className='divUsuariosSeguidos'>

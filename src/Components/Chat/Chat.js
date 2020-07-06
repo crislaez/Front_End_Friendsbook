@@ -7,6 +7,7 @@ import Services from '../../Services/Services';
 //sweetalert
 import swal from 'sweetalert';
 
+let variableIntervalo;
 
 function Chat(props){
 
@@ -17,7 +18,12 @@ function Chat(props){
     useEffect( () => {
 
         funcionObtenerDatosUsuarioChat();
-        funcionObrtenerMesajesChat();
+        // funcionObrtenerMesajesChat();
+        variableIntervalo = funcionIntervalo();
+
+        return () => {
+            clearInterval(variableIntervalo);
+        }
     },[props.idUaurioChat]);
 
     
@@ -47,9 +53,8 @@ function Chat(props){
 
             Services.addChat(data)
             .then(response => {
-                if(response.success){
-                    //llamamos a la funcion para rellenar el array con el nuevo mensaje ingresado
-                    funcionObrtenerMesajesChat();
+                if(!response.success){
+                    swal('Oops','Ha ocurrido un error','error')
                 }
             })
             .catch(err => console.log(err));
@@ -63,6 +68,15 @@ function Chat(props){
         }
        
     };
+
+    //funcion que cargara el chat cada segundo
+    const funcionIntervalo = () => {
+        let tiempo = setInterval(() => {
+            //llamamos a la funcion para rellenar el array con el nuevo mensaje ingresado
+            funcionObrtenerMesajesChat();
+        },500);
+        return tiempo;
+    }
     //funcion para obtener los mensajes del chat
     const funcionObrtenerMesajesChat = () => {
         Services.getChatByIdUSers(props.idUaurioChat,parseInt(localStorage.getItem('primaryfriendsbook')))

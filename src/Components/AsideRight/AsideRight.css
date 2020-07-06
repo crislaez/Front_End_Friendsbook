@@ -9,7 +9,7 @@
 
 .asideRight h3{
     margin-top: 20px;
-    color: #A4A4A4;
+    color: #737373;
     margin-left: 2%;
 }
 .asideRight:hover{
@@ -17,7 +17,7 @@
 }
 
 .asideRight::-webkit-scrollbar{
-    width: 1%;
+    width: 0.5%;
     background: #ccc;
     border-radius: 4px;
 }
@@ -28,12 +28,49 @@
 
 .divPublicidad{
     width: 100%;
-    height: 250px;
+    height: 370px;
     border-bottom: 1px solid #BBBBBB;
+    float: left;
+}
+
+.divPublicidadArriva{
+    width: 100%;
+    height: 150px;
+    margin-top: 10px;
+    float: left;
+}
+
+.divPublicidadImagen{
+    width: 50%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 5px;
+    float: left;
+}
+
+.divPublicidadTItulo{
+    width: 48%;
+    margin-left: 1%;
+    float: left;
+}
+
+.divPublicidadTItulo p{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.divPublicidadImagen img{
+    width: 100%;
+    height: 150px;
 }
 
 .divUsuariosSeguidos{
     min-height: 500px;
+    float: left;
+}
+
+.divUsuariosSeguidos h3{
+    margin-top: 10px;
 }
 
 .contenedorUsuarioSeguidos{

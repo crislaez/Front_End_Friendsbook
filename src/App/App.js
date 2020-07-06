@@ -170,7 +170,7 @@ function App(props){
                     variableMostrarAsides
                     ?
                     <div>
-                        <AsideLeft></AsideLeft>
+                        <AsideLeft datosUsuarioLogueado={datosUsuarioLogueado}></AsideLeft>
                         <AsideRight funcionUsuariosSeguidos={funcionUsuariosSeguidos} arrayUsuariosSeguidos={arrayUsuariosSeguidos} funcionUsuarioChat={funcionUsuarioChat}></AsideRight>
                     </div>
                     :
