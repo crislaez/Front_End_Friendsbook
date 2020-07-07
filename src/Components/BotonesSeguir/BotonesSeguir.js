@@ -47,6 +47,7 @@ function BotonesSeguir(props){
                if(response.success){
                 console.log(response)
                 setCambiarABotonSeguir(true);
+                swal('Ook','Ahora le sigues','success')
                }
            })
            .catch(err => console.log(err));
@@ -62,15 +63,27 @@ function BotonesSeguir(props){
     const handleClickDejarSeguir = () => {
         if(localStorage.getItem('primaryfriendsbook')){
 
-            Services.unFollow(props.arrayDatopsUsuarioPerfil.id_usuario, localStorage.getItem('primaryfriendsbook'))
-            .then(response => {
-                if(response.success){
-                    console.log(response)
-                    setCambiarABotonSeguir(false);
-                }                
-            })
-            .catch(err => console.log(err));
-
+            swal({
+                title: "Estas seguro?",
+                text: "Le dejaras de seguir!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                Services.unFollow(props.arrayDatopsUsuarioPerfil.id_usuario, localStorage.getItem('primaryfriendsbook'))
+                .then(response => {
+                    if(response.success){
+                        console.log(response)
+                        setCambiarABotonSeguir(false);
+                        swal('Ook','Ya no le sigues','success')
+                    }                
+                })
+                .catch(err => console.log(err));
+            } 
+          });
+          
         }else{
             swal('Oops','Debes estar logueado','error');
             props.history.push('/login');

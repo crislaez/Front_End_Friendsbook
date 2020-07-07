@@ -81,6 +81,10 @@ const checkLike = (data, data2) => {
 const removeLike = (data, data2) => {
     return fetch(process.env.REACT_APP_RUTA+'/removeLike/'+data+'/'+data2,{method:'DELETE', headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
 }
+//contar likes
+const countLike = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/countLike/'+data,{method:'GET'}).then(data => data.json())
+}
 
 export default 
     {
@@ -102,5 +106,6 @@ export default
         getChatByIdUSers,
         addLike,
         checkLike,
-        removeLike
+        removeLike,
+        countLike
     }

@@ -80,17 +80,20 @@ function Perfil(props){
             }           
         })
         .catch(err => console.log(err))
-    }
+    };
 
+    //funcion para subir la foto
     const handleClickAparecerSubirFoto = () => {
         setMostrarComponeteSubirFoto(!mostrarComponeteSubirFoto);
     };
 
+    //funcion para ver las fotos
     const handleClickVerFotos = () => {
         setMostrarContenedorFotos(true);
         setMostrarContenedorVerAmigios(false);
     };
     
+    //fuincuin para qeu se carge el componente de ver amigos
     const handleClickVerAmigos = () => {
         setMostrarContenedorVerAmigios(true);
         setMostrarContenedorFotos(false);
