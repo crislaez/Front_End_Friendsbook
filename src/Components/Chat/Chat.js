@@ -101,7 +101,7 @@ function Chat(props){
 
             <div className='contenedorChat'>
             {
-                arrayMensajesChat
+                arrayMensajesChat.toString()
                 ?
                 arrayMensajesChat.map((dato, key) => {
                     let flotar,fondo,colorTexto,noMostrarImagen;

@@ -69,6 +69,19 @@ const addChat = (data) => {
 const getChatByIdUSers = (data, data2) => {
     return fetch(process.env.REACT_APP_RUTA+'/getChatByIdUSers/'+data+'/'+data2,{method:'GET'}).then(data => data.json())
 }
+//dar like
+const addLike = (data) => {
+    return fetch(process.env.REACT_APP_RUTA+'/addLike',{method:'POST', body:data, headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
+}
+//comprobar like
+const checkLike = (data, data2) => {
+    return fetch(process.env.REACT_APP_RUTA+'/checkLike/'+data+'/'+data2,{method:'GET'}).then(data => data.json())
+}
+//remover like
+const removeLike = (data, data2) => {
+    return fetch(process.env.REACT_APP_RUTA+'/removeLike/'+data+'/'+data2,{method:'DELETE', headers:{authorization: `BEARER ${localStorage.getItem('friendsbooktoken')}`}}).then(data => data.json())
+}
+
 export default 
     {
         addUser,
@@ -86,5 +99,8 @@ export default
         getAllImage,
         getFollowUsers,
         addChat,
-        getChatByIdUSers
+        getChatByIdUSers,
+        addLike,
+        checkLike,
+        removeLike
     }
